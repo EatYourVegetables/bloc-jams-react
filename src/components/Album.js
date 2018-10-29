@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import albumData from './../data/albums';
+import './Album-style.css';
+
 
 class Album extends Component{
     constructor(props){
@@ -12,7 +14,9 @@ class Album extends Component{
         this.state = {
             album: album,
             currentSong: album.songs[0],
-            isPlaying: false
+            isPlaying: false,
+            hoverSong: null,
+            
         };
         this.audioElement = document.createElement('audio');
         this.audioElement.src = album.songs[0].audioSrc;
@@ -50,8 +54,29 @@ class Album extends Component{
             this.play();
         }
     }
+
     
-    render(){
+
+    handleMouseEnter(song) {
+        this.setState({hoverSong: song})
+        this.songNum(song);
+    }
+
+    songNum(song, index){
+
+        if (this.state.isPlaying && (this.state.currentSong === song)) { 
+            return (<span id="pauseIcon"></span>);
+        }
+        else if (!(this.state.isPlaying && this.state.currentSong === song) && (this.state.hoverSong === song)) {
+            return (<span id="playIcon"></span>);
+        }else{
+            return (<span>{index + 1}</span>);
+        }
+    }
+        
+    
+    
+    render(){   
        return(
         <section className="album">
             <section id="album-info">
@@ -77,9 +102,14 @@ class Album extends Component{
                 </thead>
                 <tbody>
                     {this.state.album.songs.map((song, index) =>
-                        <tr key={index} onClick={() => this.handleSongClick(song)}>
-                            <td>{index + 1}</td>
-                            <td>{song.title}</td>
+                        <tr id="song-row" key={index} 
+                        onMouseEnter={() => this.handleMouseEnter(song)}
+                        onMouseLeave={() => this.setState({hoverSong: null})}
+                        onClick={() => this.handleSongClick(song)}>
+                            <td>
+                                {this.songNum(song, index)}
+                            </td>
+                            <td id="title">{song.title}</td>
                             <td>{song.duration}</td>
                         </tr>
                     )}

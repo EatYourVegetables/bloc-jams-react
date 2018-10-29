@@ -1,0 +1,24 @@
+#song-list{
+    border-collapse: collapse;
+    color: rgb(124, 124, 124);
+}
+
+#song-row:hover{
+ cursor: pointer;
+ background-color: rgba(0, 0, 0, 0.05);
+ 
+}
+
+#playIcon:before{
+    font-family: "Ionicons";
+    content:"\f357";
+}
+
+#pauseIcon:before {
+    font-family: "Ionicons";
+    content: "\f478";
+}
+
+#title{
+    padding: 0 40px;
+}
