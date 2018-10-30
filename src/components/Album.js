@@ -68,7 +68,7 @@ class Album extends Component{
         const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
         console.log(currentIndex);
         console.log((this.state.album.songs.length) - 1);
-        const newIndex =  (currentIndex >= (this.state.album.songs.length) - 1) ? 0 : currentIndex+1;
+        const newIndex =  (currentIndex >= (this.state.album.songs.length) - 1) ? 0 : currentIndex+1; //could have used Math.min but wanted loopability
         const newSong = this.state.album.songs[newIndex];
         this.setSong(newSong);
         this.play();
@@ -80,11 +80,12 @@ class Album extends Component{
     }
 
     songNum(song, index){
+        const pauseIcon = this.state.isPlaying && (this.state.currentSong === song);
 
-        if (this.state.isPlaying && (this.state.currentSong === song)) { 
+        if (pauseIcon) { 
             return (<span id="pauseIcon"></span>);
         }
-        else if (!(this.state.isPlaying && this.state.currentSong === song) && (this.state.hoverSong === song)) {
+        else if (!pauseIcon && (this.state.hoverSong === song)) {
             return (<span id="playIcon"></span>);
         }else{
             return (<span>{index + 1}</span>);
