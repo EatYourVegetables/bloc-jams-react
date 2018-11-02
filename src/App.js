@@ -10,11 +10,13 @@ class App extends Component {
     return (
       <div className="App">
         <header>
-          <nav>
-            <Link to='/'>Landing </Link>
-            <Link to='/library'> Library</Link>
-          </nav>
-          <h1>Bloc Jams</h1>
+          <div id="nav-container">
+            <nav id="nav-bar">
+            <h1>Bloc Jams</h1>
+              <Link to='/'>Landing </Link>
+              <Link to='/library'> Library</Link>
+            </nav>
+          </div>
         </header>
         <main>
           <Route exact path="/" component={Landing} />

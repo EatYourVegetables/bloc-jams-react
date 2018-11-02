@@ -1,0 +1,89 @@
+#player-bar-container{
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 1;
+    margin-left: -269px;
+}
+
+.player-bar{
+    all: unset;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 90px;
+    padding: 0 16px;
+    z-index: 1;background-color: gray;
+}
+
+#track-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 30%;
+    min-width: 180px;
+}
+
+#track-text-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0 14px;
+}
+
+#track-title{
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    color: #fff;
+    margin: 0;
+}
+
+#album-artist{
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: .015em;
+    margin: 0;
+}
+
+#album-cover-art, #album-cover{
+    width: 56px;
+    height: 56px;
+}
+
+#track-control{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+    max-width: 722px;
+}
+
+#buttons{
+    display: flex;
+}
+
+#time-and-slider{
+    display: flex;
+    width: 100%;
+}
+
+#seek-bar-track{
+    width: 100%;
+}
+
+#volume-control{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 30%;
+    min-width: 180px;
+
+}
+
+#seek-bar-volume {
+    margin-left: 10px;
+}

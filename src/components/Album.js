@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
-import './Album-style.css';
+import './../styles/Album-style.css';
 
 
 class Album extends Component{
@@ -64,7 +64,6 @@ class Album extends Component{
 
     componentWillUnmount() {
         this.audioElement.src = null;
-        this.audioElement = null;
         this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
         this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
         this.audioElement.removeEventListener('volumechange', this.eventListeners.volumechange);
@@ -152,44 +151,50 @@ class Album extends Component{
     
     render(){   
        return(
-        <section className="album">
-            <section id="album-info">
-                <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
-                <div className="album-details">
-                    <h1 id="album-title">{this.state.album.title}</h1>
-                    <h2 className="artist">{this.state.album.artist}</h2>
-                    <div id="release-info">{this.state.album.releaseInfo}</div>
-                </div>
-            </section>
-            <table id="song-list">
-                <colgroup>
-                    <col id="song-number-column" />
-                    <col id="song-title-column" />
-                    <col id="song-duration-column" />
-                </colgroup>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.state.album.songs.map((song, index) =>
-                        <tr id="song-row" key={index} 
-                        onMouseEnter={() => this.handleMouseEnter(song)}
-                        onMouseLeave={() => this.setState({hoverSong: null})}
-                        onClick={() => this.handleSongClick(song)}>
-                            <td>
-                                {this.songNum(song, index)}
-                            </td>
-                            <td id="title">{song.title}</td>
-                            <td>{this.formatTime(song.duration)}</td>
+        <section id="album-container">
+            <div id="album">
+                <section id="album-info">
+                    <img id="album-cover-art-big" src={this.state.album.albumCover} alt={this.state.album.title}/>
+                    <div id="album-details">
+                        <h1 id="album-title">{this.state.album.title}</h1>
+                        <h2 id="artist">{this.state.album.artist}</h2>
+                        <div id="release-info">{this.state.album.releaseInfo}</div>
+                    </div>
+                </section>
+                <table id="song-list">
+                    <colgroup>
+                        <col id="song-number-column" />
+                        <col id="song-title-column" />
+                        <col id="song-duration-column" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Time</th>
                         </tr>
-                    )}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {this.state.album.songs.map((song, index) =>
+                            <tr id="song-row" key={index} 
+                            onMouseEnter={() => this.handleMouseEnter(song)}
+                            onMouseLeave={() => this.setState({hoverSong: null})}
+                            onClick={() => this.handleSongClick(song)}>
+                                <td id="track-index">
+                                    {this.songNum(song, index)}
+                                </td>
+                                <td id="title">{song.title}</td>
+                                <td id="time">{this.formatTime(song.duration)}</td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+            </div>
             <PlayerBar
+                albumCover={this.state.album.albumCover}
+                albumTitle={this.state.album.title}
+                albumArtist={this.state.album.artist}
+                track={this.state.currentSong.title}
                 isPlaying={this.state.isPlaying}
                 currentSong={this.state.currentSong}
                 currentTime={this.formatTime(this.audioElement.currentTime)}

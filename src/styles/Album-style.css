@@ -1,0 +1,69 @@
+main{
+    display: flex;
+    width: 100%;
+}
+
+#song-list{
+    border-collapse: collapse;
+    color: rgb(124, 124, 124);
+}
+
+#song-row:hover{
+ cursor: pointer;
+ background-color: rgba(0, 0, 0, 0.05);
+ 
+}
+
+#playIcon:before{
+    font-family: "Ionicons";
+    content:"\f357";
+}
+
+#pauseIcon:before {
+    font-family: "Ionicons";
+    content: "\f478";
+}
+
+
+#album-cover-art-big {
+    width: 250px;
+}
+
+#album-container{
+    display: flex;
+    width: 100%;
+}
+
+#album{
+    padding: 2em 40px 0 40px;
+    margin: 0 auto;
+    max-width: 1480px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#album-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    padding: 0 10px;
+        margin-right: 75px;
+}
+
+#song-list{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    padding: 0 10px;
+}
+
+#song-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5px;
+    height: 2em;
+    font-size: 16px;
+}
