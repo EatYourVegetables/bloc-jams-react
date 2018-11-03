@@ -14,7 +14,36 @@
     justify-content: space-between;
     height: 90px;
     padding: 0 16px;
-    z-index: 1;background-color: gray;
+    z-index: 1;
+    background-color: rgba(10, 7, 17, 0);
+    /* border-top: 1px solid #0E0B16;
+    box-shadow: 0px 0px 5px 1px rgba(14, 11, 22, 1);
+    */
+} 
+
+.icon-ion-pause:before{
+    font-family: "Ionicons";
+    content: "\f478";
+    color: #E7DFDD;
+    font-size: 1.75em;
+
+}
+
+.icon-ion-play:before{
+    font-family: "Ionicons";
+    content:"\f357";
+    color: #E7DFDD;
+    font-size: 1.75em;
+}
+
+.icon-ion-play:hover:before {
+    color:white;
+    font-size: 2em;
+}
+
+.icon-ion-pause:hover:before {
+    color: white;
+    font-size: 2em;
 }
 
 #track-info{
@@ -45,6 +74,7 @@
     font-size: 12px;
     line-height: 16px;
     letter-spacing: .015em;
+    color: #E7DFDD;
     margin: 0;
 }
 
@@ -86,4 +116,31 @@
 
 #seek-bar-volume {
     margin-left: 10px;
+}
+
+button {
+    border: none;
+    padding: .75rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    background: none;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out,
+        transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+
+}
+
+button:focus {
+    outline: none;
+}
+
+button:active {
+
 }

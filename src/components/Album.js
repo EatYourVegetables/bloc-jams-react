@@ -23,6 +23,7 @@ class Album extends Component{
         };
         this.audioElement = document.createElement('audio');
         this.audioElement.src = album.songs[0].audioSrc;
+        
     }
 
     play() {
@@ -123,6 +124,18 @@ class Album extends Component{
         this.setState({hoverSong: song})
         this.songNum(song);
     }
+        
+    formatTime(time){
+        time = Math.floor(time);
+        const minutes = Math.floor(time/60);
+        const seconds = time % 60;
+        const result = minutes + (9 < seconds ? ':' : ':0') + seconds;
+        if(isNaN(time)){
+            return "-:--";
+        }else{
+            return result;
+        }
+    }
 
     songNum(song, index){
         const pauseIcon = this.state.isPlaying && (this.state.currentSong === song);
@@ -136,16 +149,20 @@ class Album extends Component{
             return (<span>{index + 1}</span>);
         }
     }
-        
-    formatTime(time){
-        time = Math.floor(time);
-        const minutes = Math.floor(time/60);
-        const seconds = time % 60;
-        const result = minutes + (9 < seconds ? ':' : ':0') + seconds;
-        if(isNaN(time)){
-            return "-:--";
-        }else{
-            return result;
+
+    highlight(song){
+        if (this.state.isPlaying && (this.state.currentSong === song))
+            return <span>{song.title}</span>;
+        else
+            return song.title;
+    }
+
+    highlightOrNot(song){
+        if (this.state.isPlaying && (this.state.currentSong === song)){
+           return "song-row-highlighted"
+        }
+        else{
+            return "song-row"
         }
     }
     
@@ -158,33 +175,32 @@ class Album extends Component{
                     <div id="album-details">
                         <h1 id="album-title">{this.state.album.title}</h1>
                         <h2 id="artist">{this.state.album.artist}</h2>
+                        <div id="play-shuffle-buttons">
+                            <button id="play"><span>Play</span></button>
+                            <button id="shuffle"><span>Shuffle</span></button>
+                        </div>
                         <div id="release-info">{this.state.album.releaseInfo}</div>
                     </div>
                 </section>
                 <table id="song-list">
-                    <colgroup>
-                        <col id="song-number-column" />
-                        <col id="song-title-column" />
-                        <col id="song-duration-column" />
-                    </colgroup>
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Title</th>
-                            <th>Time</th>
+                        <tr className="song-row-head">
+                            <th className="track-index-head">#</th>
+                            <th className="title-head">TITLE</th>
+                            <th className="time-head">TIME</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="song-table">
                         {this.state.album.songs.map((song, index) =>
-                            <tr id="song-row" key={index} 
+                            <tr className={this.highlightOrNot(song)} key={index} 
                             onMouseEnter={() => this.handleMouseEnter(song)}
                             onMouseLeave={() => this.setState({hoverSong: null})}
                             onClick={() => this.handleSongClick(song)}>
-                                <td id="track-index">
+                                <td className="track-index">
                                     {this.songNum(song, index)}
                                 </td>
-                                <td id="title">{song.title}</td>
-                                <td id="time">{this.formatTime(song.duration)}</td>
+                                <td className="title">{this.highlight(song)}</td>
+                                <td className="time">{this.formatTime(song.duration)}</td>
                             </tr>
                         )}
                     </tbody>

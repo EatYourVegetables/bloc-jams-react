@@ -2,14 +2,31 @@
   display: flex;
 }
 
-a{
+#nav-bar a{
   text-decoration: none;
+  color: #E7DFDD;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+#logo{
+  font-size: 30px;
+  color: white;
+  letter-spacing: -1.5px;
+  font-weight: 700;
+}
+
+#logo span:before{
+  font-family: "Ionicons";
+  content:"\f113";
+  font-size: 20px;
+  margin: 0 3px 0 2px;
 }
 
 #nav-bar{
   display: flex;
   flex-direction: column;
-  background-color: gray;
+  background-color: #0E0B16;
   width: 220px;
   height: 100%;
   padding: 24px 24px 5px;

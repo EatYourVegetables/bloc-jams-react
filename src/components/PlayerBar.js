@@ -33,7 +33,7 @@ import './../styles/PlayerBar-style.css';
                       <span className="icon ion-md-skip-backward"></span>
                   </button>
                   <button id="play-pause" onClick={this.props.handleSongClick} >
-                      <span className={this.props.isPlaying ? 'icon ion-md-pause' : 'icon ion-md-play'}></span>
+                      <span className={this.props.isPlaying ? 'icon-ion-pause' : 'icon-ion-play'}></span>
                   </button>
                   <button id="next" onClick={this.props.handleNextClick}>
                       <span className="icon ion-md-skip-forward"></span>
