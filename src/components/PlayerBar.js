@@ -18,7 +18,10 @@ import './../styles/PlayerBar-style.css';
         <section className="player-bar">
           <section id="track-info">
               <div id="album-cover">
-                <img id="album-cover-art" src={this.props.albumCover} alt={this.props.albumTitle}/>
+                  {(this.props.albumCover === undefined)
+                    ? <div id="album-cover-art"></div>
+                    : <img id="album-cover-art" src={this.props.albumCover} alt={this.props.albumTitle} />
+                    }
               </div>
               <div id="track-text-info">
                 <p id="track-title">{this.props.track}</p>
@@ -40,7 +43,11 @@ import './../styles/PlayerBar-style.css';
                   </button>
               </div>
               <div id="time-and-slider">
-                  <div className="current-time">{this.props.currentTime}</div>
+                  {(this.props.currentTime === undefined)
+                    ? <div id="current-time">0:00</div>
+                    : <div id="current-time">{this.props.currentTime}</div>
+                  }
+                  
                   <input 
                     type="range" 
                     id="seek-bar-track" 
@@ -50,7 +57,10 @@ import './../styles/PlayerBar-style.css';
                     step="0.01" 
                     onChange={this.props.handleTimeChange}
                   />   
-                  <div className="total-time">{this.props.duration}</div>
+                  {(this.props.duration === undefined)
+                    ? <div id="total-time">0:00</div>
+                    : <div id="total-time">{this.props.duration}</div>
+                  }
               </div>
           </section>
 

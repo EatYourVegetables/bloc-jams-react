@@ -9,12 +9,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <div id="main-background"></div>
+      <div id="main-background-gradient"></div>
         <header>
           <div id="nav-container">
             <nav id="nav-bar">
-              <h1 id="logo">Bl<span></span>c Jams</h1>
-              <Link to='/'>Landing </Link>
-              <Link to='/library'>Library</Link>
+              <div id="main-logo-container">
+                <div id="main-logo-big">
+                  <h1>BLOC<span>JAMS</span></h1>
+                </div>
+                <div id="main-logo-small">
+                    <h2>TURN UP THE MUSIC</h2>
+                </div>
+              </div>
+              <div id="link-container">
+                <Link to='/' id="home">Home</Link>
+                <Link to='/library' id="library">Library</Link>
+              </div>
             </nav>
           </div>
         </header>

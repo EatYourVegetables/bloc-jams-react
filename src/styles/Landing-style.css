@@ -1,0 +1,242 @@
+#landing{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    color:#E7DFDD;
+    padding: 50px;
+    margin-left: 268px;
+    margin-bottom: 90px;
+}
+
+#content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 50%;
+}
+
+#logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50%;
+    transition: .5s ease;
+}
+
+#logo-big{
+    font-family: 'Archivo Black',
+    sans-serif;
+    font-size: 2em;
+    color: #A239CA;
+    letter-spacing: -2.5px;
+}
+
+#logo-big span{
+    color: white;
+}
+
+#logo-big h1 {
+    margin: 0;
+}
+
+#logo-small{
+    font-family:'Abel',
+    sans-serif;
+    color: white;
+}
+
+#logo-small h2{
+    font-weight: 100;
+    margin: 0;
+    font-size: 1.25em;
+    margin-top: -10px;
+    letter-spacing: 2px;
+}
+
+#selling-points{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+#albums-collage-container {
+    background: url('/assets/images/records.jpg') right center;
+    background-size: cover;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+    position: absolute;
+    width: 365px;
+    height: 325px;
+    z-index: -1;
+
+}
+
+#music-container {
+    background: url('/assets/images/music.jpg');
+    background-size: cover;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px); 
+    position: absolute;
+    width: 365px;
+    height: 315px;
+    z-index: -1;
+}
+
+#headphones-container {
+    background: url('/assets/images/headphones.jpg')right center;
+    background-size: cover;
+    -webkit-filter: blur(10px);
+    -moz-filter: blur(10px);
+    -o-filter: blur(10px);
+    -ms-filter: blur(10px);
+    filter: blur(10px);
+    position: absolute;
+    width: 365px;
+    height: 315px;
+    z-index: -1;
+}
+
+.point{
+    transition: .5s ease;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    height: 300px;
+    background-color: rgba(41, 35, 58, 0.5);
+    box-shadow: 0 0 15px rgba(14, 11, 22, 0.5); 
+    padding: 6px;
+    margin: 25px;
+    overflow: hidden;
+}
+
+.point span{
+    color: #A239CA;
+}
+
+.point-title{
+    color: white;
+    
+}
+
+.point-description{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#listen-button-section{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#listen-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 50px;
+    background-color: #A239CA;
+    border-radius: 5px;
+    padding: 0 10px;
+}
+
+#listen-button{
+    color: #E7DFDD;
+    font-weight: 500;
+}
+
+#listen-button:before {
+    font-family: "Ionicons";
+    content: "\f306";
+    margin-right: 15px;
+}
+
+#points-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 1650px) {
+    .point{
+        width: 300px;
+        height: 250px;
+    }
+
+    #albums-collage-container,
+    #music-container,
+    #headphones-container {
+        width: 315px;
+        height: 275px;
+    }
+}
+
+@media only screen and (max-width: 1460px) {
+    #points-container {
+        flex-direction: column;
+    }
+    .point{
+        width: 500px;
+        height: 400px;
+    }
+
+    #albums-collage-container,
+    #music-container,
+    #headphones-container {
+        width: 315px;
+        height: 350px;
+    }
+
+    #content{
+        height: 75%
+    }
+
+    #logo-container{
+        height: 25%;
+    }
+
+    #albums-collage-container,
+    #music-container,
+    #headphones-container {
+        width: 525px;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    #landing {
+        margin-left: 0px;
+        margin-top: 75px;
+        padding: 25px 0px;
+    }
+    #logo-container {
+        display: none;
+    }
+
+    #content {
+        height: 100%;
+    }
+
+    .point {
+        width: 500px;
+        height: 250px;
+    }
+}

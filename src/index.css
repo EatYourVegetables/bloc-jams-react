@@ -6,9 +6,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-width:650px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  
+  /* background-image: linear-gradient(to top, #0B030E 0%, #1B1823 100%); */
 }

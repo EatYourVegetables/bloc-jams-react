@@ -127,14 +127,41 @@ class Album extends Component{
         
     formatTime(time){
         time = Math.floor(time);
-        const minutes = Math.floor(time/60);
         const seconds = time % 60;
-        const result = minutes + (9 < seconds ? ':' : ':0') + seconds;
-        if(isNaN(time)){
-            return "-:--";
-        }else{
-            return result;
+        if(time < 3600){
+            const minutes = Math.floor(time / 60);
+            const result = minutes + (9 < seconds ? ':' : ':0') + seconds;
+            if(isNaN(time)){
+                return "-:--";
+            }else{
+                return result;
+            }
         }
+        else{
+            const hours = Math.floor(time / 3600);
+            const minutes = (Math.floor(time/60)) % 60;
+            const result = hours + ":" + minutes + (9 < seconds ? ':' : ':0') + seconds;
+            if (isNaN(time)) {
+                return "-:--";
+            } else {
+                return result;
+            }
+        }
+    }
+
+    getAlbumTime(){
+        const album = this.state.album;
+        const songs = album.songs;
+        let total = 0;
+        for(let i = 0; i<songs.length; i++){
+            total += parseInt(songs[i].duration, 10);
+        }
+        return this.formatTime(total);
+    }
+
+    getAlbumDate(string){
+        const firstWord = string.replace(/ .*/,'');
+        return firstWord; 
     }
 
     songNum(song, index){
@@ -159,25 +186,44 @@ class Album extends Component{
 
     highlightOrNot(song){
         if (this.state.isPlaying && (this.state.currentSong === song)){
-           return "song-row-highlighted"
+           return "song-row-highlighted";
         }
         else{
-            return "song-row"
+            return "song-row";
         }
     }
+
+    albumBackgroundImage(){
+        const albumImage = {
+            background: 'url(' + this.state.album.albumCover + ') center right no-repeat',
+            backgroundSize : 'cover',
+            backgroundAttachment: 'fixed'
+        }
+        return albumImage;
+    }
     
-    render(){   
+    render(){ 
+          
        return(
-        <section id="album-container">
+        < section id = "album-container">
+            <div id="back-image" style = {this.albumBackgroundImage()}></div>
+            <div id="blur-overlay"></div>
             <div id="album">
                 <section id="album-info">
                     <img id="album-cover-art-big" src={this.state.album.albumCover} alt={this.state.album.title}/>
                     <div id="album-details">
                         <h1 id="album-title">{this.state.album.title}</h1>
                         <h2 id="artist">{this.state.album.artist}</h2>
+                        
+                         <div id="release-info-container">
+                            <div id="album-time">{this.getAlbumTime()}</div>
+                            <div id="album-date">{ this.getAlbumDate(this.state.album.releaseInfo)}</div>
+                            <div id="album-length">{this.state.album.songs.length} SONGS</div>
+                        </div>
+                        
                         <div id="play-shuffle-buttons">
-                            <button id="play"><span>Play</span></button>
-                            <button id="shuffle"><span>Shuffle</span></button>
+                            <button className="play">Play</button>
+                            <button className="shuffle">Shuffle</button>
                         </div>
                         <div id="release-info">{this.state.album.releaseInfo}</div>
                     </div>

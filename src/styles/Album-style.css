@@ -1,7 +1,4 @@
-main{
-    display: flex;
-    width: 100%;
-}
+
 
 #playIcon:before{
     font-family: "Ionicons";
@@ -16,14 +13,15 @@ main{
 
 #album-cover-art-big {
     width: 250px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 #album-container{
     display: flex;
     width: 100%;
-    background-color: #0A0711;
-    /* #1B1823 */
-    background-image: linear-gradient(to top, #0B030E 0%, #1B1823 100%);
+    overflow: hidden;
+    margin-left: 268px;
+    margin-bottom: 90px;
 }
 
 #album{
@@ -34,11 +32,36 @@ main{
     justify-content: space-evenly;
     width: 100%;
 }
+/* #background */
+#back-image{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    -webkit-filter: blur(25px);
+    -moz-filter: blur(25px);
+    -o-filter: blur(25px);
+    -ms-filter: blur(25px);
+    filter: blur(25px);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    margin-left: -268px;
+}
+
+#blur-overlay{
+    position: fixed;
+     width: 100%;
+     height: 100%;
+     background-color: rgba(0, 0, 0, 0.75);
+     z-index: -1;
+     margin-left: -268px;
+}
 
 #album-title{
     color: white;
     margin: 12px 0 5px;
-    width: 100%;
+    width: 250px;
     overflow: hidden;
     text-overflow: ellipsis;
     text-align: center;
@@ -57,13 +80,17 @@ main{
     margin-bottom: 30px;
 }
 
-/* #play-shuffle-buttons{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
+#release-info-container {
+    display: none;
+}
 
-#play{
+ #play-shuffle-buttons{
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+} 
+
+.play{
     background-color: #A239CA;
     color: #E7DFDD;
     padding: .75em 0em;
@@ -72,16 +99,13 @@ main{
     margin-right: 10px;
 }
 
-#play span{
-    margin-left: 10px;
-}
-
-#play:before {
+.play:before {
     font-family: "Ionicons";
     content: "\f357";
+    margin-right: 10px;
 }
 
-#shuffle{
+.shuffle{
     background-color: #A239CA;
     color: #E7DFDD;
     padding: .75em 0;
@@ -89,13 +113,10 @@ main{
     border-radius: 5px;
 }
 
-#shuffle span {
-    margin-left: 10px;
-}
-
-#shuffle:before {
+.shuffle:before {
     font-family: "Ionicons";
     content: "\f37b";
+    margin-right: 10px;
 }
 
 #release-info{
@@ -182,5 +203,116 @@ main{
     color: rgba(155, 155, 155, .5);
 }
 
-.time{
+@media only screen and (max-width: 950px) {
+    #album-container {
+        margin-left: 0;
+        margin-top: 75px;
+    }
+
+    #back-image,
+    #blur-overlay {
+        margin-left: 0;
+    }
+
+    #album{
+        flex-direction: column;
+    }
+
+    #album-info {
+        flex-direction: column;
+        width: 100%;
+        padding: 50px 10px;
+        margin-right: 0;
+    }
+
+    #song-list {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1250px) {
+    #album {
+        flex-direction: column;
+    }
+
+    #album-info {
+        flex-direction: row;
+        width: 100%;
+        padding: 50px 10px;
+        margin-right: 0;
+        align-items: flex-end;
+    }
+
+    #album-details{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #album-title {
+        color: white;
+        margin: 12px 0 5px;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: left;
+        font-weight: 900;
+    }
+
+    #album-cover-art-big {
+        margin-right: 50px;
+    }
+
+    #song-list {
+        width: 100%;
+    }
+
+    #release-info {
+        display: none;
+    }
+
+    #release-info-container {
+        display: flex;
+        align-items: baseline;
+        color: rgba(155, 155, 155, .5);
+        font-weight: 100;
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    #album-time{
+        color: rgba(155, 155, 155, .5);
+        font-weight: 100;
+        font-size: 13px;
+    }
+
+    #album-time:before {
+        font-family: "Ionicons";
+        content:"\f394";
+        margin-right: 5px;
+    }
+
+    #album-length {
+        margin-left: 5px;
+    }
+
+    #album-length:before {
+        content: "• ";
+        margin-right: 2px;
+    }
+
+    #album-date{
+        margin-left: 10px;
+    }
+
+    #play-shuffle-buttons{
+        margin-bottom: 0;
+    }
+
+    #artist{
+        margin-bottom: 5px;
+        color: white;
+        font-weight: 100;
+    }
+
 }
