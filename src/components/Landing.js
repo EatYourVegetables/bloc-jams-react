@@ -16,27 +16,25 @@ const Landing = () => (
         <section id="selling-points">
         <div id="points-container">
             <div class="point">
+                <div id="music-note"></div>
                 <h2 class="point-title">Choose <span>your</span> music</h2>
                 <p class="point-description">Why should you have to listen to music that someone else chose?</p>
-                
-                <div id="music-container"></div>
             </div>
 
 
             
             <div class="point">
+                <div id="ear-phones"></div>
                 <h2 class="point-title"><span>Ad-free</span> streaming</h2>
                 <p class="point-description">No arbitrary limits. No distractions.</p>
-                <div id="headphones-container"></div>
             </div>
             
 
             
             <div class="point">
+                <div id="music-disc"></div>
                 <h2 class="point-title"><span>Endless</span> music options</h2>
                 <p class="point-description">Have access to one of the biggest and best collection of music out there.</p>
-                < div id = "albums-collage-container" ></div>
-            
             </div>
         </div>
         <div id="listen-button-section">

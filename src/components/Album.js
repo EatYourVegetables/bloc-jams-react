@@ -89,10 +89,22 @@ class Album extends Component{
         }
     }
 
+    handleAlbumPlayClick() {
+        this.setSong(this.state.album.songs[0]);
+        this.play();
+    }
+
+    handleAlbumShuffleClick() {
+        const random = Math.floor(Math.random() * this.state.album.songs.length);
+        this.setSong(this.state.album.songs[random]);
+        this.play();
+    }
+
     handlePrevClick() {
         const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
         const newIndex = Math.max(0, currentIndex - 1);
         const newSong = this.state.album.songs[newIndex];
+        console.log(this.state.album.songs[newIndex]);
         this.setSong(newSong);
         this.play();
     }
@@ -101,7 +113,7 @@ class Album extends Component{
         const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
         console.log(currentIndex);
         console.log((this.state.album.songs.length) - 1);
-        const newIndex =  (currentIndex >= (this.state.album.songs.length) - 1) ? 0 : currentIndex+1; //could have used Math.min but wanted loopability
+        const newIndex =  (currentIndex >= (this.state.album.songs.length) - 1) ? 0 : currentIndex+1; 
         const newSong = this.state.album.songs[newIndex];
         this.setSong(newSong);
         this.play();
@@ -132,7 +144,7 @@ class Album extends Component{
             const minutes = Math.floor(time / 60);
             const result = minutes + (9 < seconds ? ':' : ':0') + seconds;
             if(isNaN(time)){
-                return "-:--";
+                return "0:00";
             }else{
                 return result;
             }
@@ -142,7 +154,7 @@ class Album extends Component{
             const minutes = (Math.floor(time/60)) % 60;
             const result = hours + ":" + minutes + (9 < seconds ? ':' : ':0') + seconds;
             if (isNaN(time)) {
-                return "-:--";
+                return "0:00";
             } else {
                 return result;
             }
@@ -222,8 +234,8 @@ class Album extends Component{
                         </div>
                         
                         <div id="play-shuffle-buttons">
-                            <button className="play">Play</button>
-                            <button className="shuffle">Shuffle</button>
+                            <button className="play" onClick={() => this.handleAlbumPlayClick()}>Play</button>
+                            <button className="shuffle" onClick={() => this.handleAlbumShuffleClick()}>Shuffle</button>
                         </div>
                         <div id="release-info">{this.state.album.releaseInfo}</div>
                     </div>

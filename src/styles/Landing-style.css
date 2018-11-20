@@ -14,9 +14,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
-    height: 50%;
+    height: 85%;
 }
 
 #logo-container {
@@ -24,7 +24,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 50%;
+    height: 15%;
     transition: .5s ease;
 }
 
@@ -66,7 +66,7 @@
     
 }
 
-#albums-collage-container {
+/* #albums-collage-container {
     background: url('/assets/images/records.jpg') right center;
     background-size: cover;
     -webkit-filter: blur(10px);
@@ -107,10 +107,10 @@
     width: 365px;
     height: 315px;
     z-index: -1;
-}
+} */
 
 .point{
-    transition: .5s ease;
+    transition: .3s ease;
     display: flex;
     position: relative;
     flex-direction: column;
@@ -118,16 +118,43 @@
     justify-content: center;
     width: 350px;
     height: 300px;
-    background-color: rgba(41, 35, 58, 0.5);
-    box-shadow: 0 0 15px rgba(14, 11, 22, 0.5); 
+    margin-top: -150px;
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
     padding: 6px;
     margin: 25px;
     overflow: hidden;
 }
 
-.point span{
-    color: #A239CA;
+.point:hover{
+    background-color: rgba(0, 0, 0, 0.5);
 }
+
+#music-note:before{
+    color: #ffffff;
+    font-size: 2em;
+    font-family: "Ionicons";
+    content:"\f332";
+}
+
+#ear-phones:before {
+    color: #ffffff;
+    font-size: 2em;
+    font-family: "Ionicons";
+    content: "\f306";
+}
+
+#music-disc:before {
+    color: #ffffff;
+    font-size: 2em;
+    font-family: "Ionicons";
+    content:"\f2e0";
+}
+
+/* .point span{
+    color: #A239CA;
+} */
 
 .point-title{
     color: white;
@@ -139,6 +166,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    height: 30px;
 }
 
 #listen-button-section{
@@ -153,21 +181,31 @@
     justify-content: center;
     width: 150px;
     height: 50px;
-    background-color: #A239CA;
+    background-color: #29233a;
     border-radius: 5px;
     padding: 0 10px;
+    transition: .5s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+#listen-button-container:hover {
+    color: #A239CA;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+    0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 #listen-button{
-    color: #E7DFDD;
+    color: #ffffff;
     font-weight: 500;
 }
 
-#listen-button:before {
+/* #listen-button:before {
     font-family: "Ionicons";
     content: "\f306";
     margin-right: 15px;
-}
+} */
 
 #points-container{
     display: flex;
@@ -195,16 +233,17 @@
         flex-direction: column;
     }
     .point{
-        width: 500px;
-        height: 400px;
+        width: 100%;
+        height: 150px;
+        padding: 20px 0;
     }
 
-    #albums-collage-container,
+    /* #albums-collage-container,
     #music-container,
     #headphones-container {
         width: 315px;
         height: 350px;
-    }
+    } */
 
     #content{
         height: 75%
@@ -213,12 +252,12 @@
     #logo-container{
         height: 25%;
     }
-
+/* 
     #albums-collage-container,
     #music-container,
     #headphones-container {
-        width: 525px;
-    }
+        width: 100%;
+    } */
 }
 
 @media only screen and (max-width: 950px) {
@@ -236,7 +275,8 @@
     }
 
     .point {
-        width: 500px;
-        height: 250px;
+        width: 100%;
+        height: 150px;
+        padding: 20px 0;
     }
 }
